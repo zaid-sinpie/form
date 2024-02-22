@@ -1,3 +1,5 @@
+'use strict';
+
 const countryListAlpha2 = {
     "AF": "Afghanistan",
     "AL": "Albania",
@@ -288,6 +290,7 @@ const stateAbbrivations = [
     ["Puducherry", "PY"]
 ];
 
+
 //
 const countrySelector = document.getElementById('country');
 const country = document.createElement('div');
@@ -298,6 +301,10 @@ const state = document.createElement('div');
 const payValue = document.querySelector('.btn');
 
 const submitBtn = document.querySelector('.sub');
+
+
+const overlay = document.querySelector('.overlay');
+const modal = document.querySelector('.modal');
 ///
 
 
@@ -315,7 +322,21 @@ for (const [value, key] of stateAbbrivations){
 payValue.addEventListener('click',function(e){
     e.preventDefault()
     //modal//
-    
+    overlay.classList.remove('hidden')
+    modal.classList.remove('hidden')
     //visiblethe submit btn//
         submitBtn.classList.remove('hidden');
 });
+
+// overlay.addEventListener('click',function(){
+//     overlay.classList.add('hidden')
+//     modal.classList.add('hidden')
+// })
+
+// document.addEventListener('keydown',(e) => {
+//     // console.log(e.key);
+//     if (e.key === 'Escape'){
+//         overlay.classList.add('hidden')
+//         modal.classList.add('hidden')
+//     }
+// })

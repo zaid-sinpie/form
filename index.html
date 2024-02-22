@@ -71,17 +71,33 @@
         background: rgb(56, 117, 56);
         color: #e3e3e3;
     }
-    .hidden{
-        display: none;
-    }
     .modal{
-        
+        width: 600px;
+        height: 400px;
+        background: white;
+        border-radius: 12px;
+        position: absolute;
+        top: 120px;
+        left: 390px;
+        border: 1px solid rgb(68, 68, 68);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
     }
     .overlay{
-        height: 100%;
-        width: 100%;
+        height: 100vw;
+        width: 100vw;
         background: rgba(0, 0, 0, .5);
         backdrop-filter: blur(20px);
+        z-index: 5;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .hidden{
+        display: none;
     }
 </style>
 </head>
@@ -133,7 +149,10 @@
         <button class="btn">Pay</button>
         <input type="submit" value="Submit" class="sub hidden">
     </form>
-    <div class="overlay"></div>
+    <div class="modal hidden">
+        <h1>hello world</h1>
+    </div>
+    <div class="overlay hidden"></div>
 </div>
 
 </body>
