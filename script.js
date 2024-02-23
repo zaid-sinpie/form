@@ -290,7 +290,6 @@ const stateAbbrivations = [
     ["Puducherry", "PY"]
 ];
 
-
 //
 const countrySelector = document.getElementById('country');
 const country = document.createElement('div');
@@ -302,9 +301,10 @@ const payValue = document.querySelector('.btn');
 
 const submitBtn = document.querySelector('.sub');
 
-
 const overlay = document.querySelector('.overlay');
 const modal = document.querySelector('.modal');
+
+const form = document.querySelector('form');
 ///
 
 
@@ -326,7 +326,34 @@ payValue.addEventListener('click',function(e){
     modal.classList.remove('hidden')
     //visiblethe submit btn//
         submitBtn.classList.remove('hidden');
+        modal.scrollIntoView(20);
 });
+
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    const value = {
+        fullName: data.get('name'),
+        email: data.get('email'),
+        panCardNumber:data.get('pan'),
+        phone:data.get('phone'),
+        address:data.get('address'),
+        pincode:data.get('pincode'),
+        country:data.get('country'),
+        state:data.get('state'),
+        amount:data.get('amount'),
+    }
+
+  
+    console.log({ value });
+  }
+  
+  form.addEventListener('submit', handleSubmit);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 // overlay.addEventListener('click',function(){
 //     overlay.classList.add('hidden')
