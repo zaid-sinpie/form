@@ -1,160 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Form</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        width: 100vw;
-        height: 100vh;
-    }
-    body h2{
-        text-align: center;
-    }
-    .container {
-        max-width: 400px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-    .form-group {
-        margin-bottom: 20px;
-    }
-    label {
-        display: block;
-        font-weight: bold;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    select {
-        width: 90%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    input[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-    .cou{
-        width: 95%;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        gap: 20px;
-    }
-    .btn{
-        background: rgb(124, 255, 124);
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        color: rgb(63, 63, 63);
-        font-weight: bolder;
-    }
-    .btn:hover{
-        background: rgb(56, 117, 56);
-        color: #e3e3e3;
-    }
-    .modal{
-        width: 600px;
-        height: 400px;
-        background: white;
-        border-radius: 12px;
-        position: absolute;
-        top: 120px;
-        left: 390px;
-        border: 1px solid rgb(68, 68, 68);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        z-index: 10;
-    }
-    .overlay{
-        height: 100vw;
-        width: 100vw;
-        background: rgba(0, 0, 0, .5);
-        backdrop-filter: blur(20px);
-        z-index: 5;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .hidden{
-        display: none;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body h2 {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .container {
+            max-width: 50%;
+            padding: 20px;
+            height: auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .cou {
+            width: 95%;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            /* flex-direction: column; */
+            justify-content: space-around;
+            gap: 20px;
+            /* position: relative; */
+        }
+
+        .btn {
+            background: rgb(124, 255, 124);
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+            color: rgb(63, 63, 63);
+            font-weight: bolder;
+            width: 50%;
+        }
+
+        .btn:hover {
+            background: rgb(56, 117, 56);
+            color: #e3e3e3;
+        }
+
+        .modal {
+            width: 600px;
+            height: 400px;
+            background: white;
+            border-radius: 12px;
+            position: absolute;
+            top: 120px;
+            left: 390px;
+            /* border: 1px solid rgb(68, 68, 68); */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 10;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
+            z-index: 5;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Fill the Details below</h2>
-    <form action="#" method="post">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <div class="container">
+        <h2>To generate receipt fill the below details</h2>
+        <form action="#" method="post" id="userForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="pan">Pan Card Number:</label>
+                <input type="text" id="pan" name="pan" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pincode:</label>
+                <input type="text" id="pincode" name="pincode" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" class="cou" required>
+                    <option value="">Select Country</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <select id="state" name="state" class="cou" required>
+                    <option value="">Select State</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="text" id="amount" name="amount" required>
+            </div>
+            <button class="btn">Donate</button>
+            <input type="submit" value="Submit" class="sub ">
+        </form>
+        <div class="modal hidden">
+            <h1>hello world</h1>
         </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="pan">Pan Card Number:</label>
-            <input type="text" id="pan" name="pan" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="number" id="phone" name="phone" required>
-        </div>
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
-        </div>
-        <div class="form-group">
-            <label for="pincode">Pincode:</label>
-            <input type="text" id="pincode" name="pincode" required>
-        </div>
-        <div class="form-group">
-            <label for="country">Country:</label>
-            <select id="country" name="country" class="cou" required>
-                <option value="">Select Country</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="state">State:</label>
-            <select id="state" name="state" class="cou" required>
-                <option value="">Select State</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="amount">Amount:</label>
-            <input type="text" id="amount" name="amount" required>
-        </div>
-        <button class="btn">Pay</button>
-        <input type="submit" value="Submit" class="sub hidden">
-    </form>
-    <div class="modal hidden">
-        <h1>hello world</h1>
+        <div class="overlay hidden"></div>
     </div>
-    <div class="overlay hidden"></div>
-</div>
 
 </body>
 <script src="./script.js"></script>
+
 </html>

@@ -1,4 +1,5 @@
 'use strict';
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 const countryListAlpha2 = {
     "AF": "Afghanistan",
@@ -290,7 +291,6 @@ const stateAbbrivations = [
     ["Puducherry", "PY"]
 ];
 
-//
 const countrySelector = document.getElementById('country');
 const country = document.createElement('div');
 
@@ -305,7 +305,11 @@ const overlay = document.querySelector('.overlay');
 const modal = document.querySelector('.modal');
 
 const form = document.querySelector('form');
-///
+
+const container = document.querySelector('.container');
+
+let donated = false;
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 for (const [key, value] of Object.entries(countryListAlpha2)) {
@@ -319,17 +323,8 @@ for (const [value, key] of stateAbbrivations){
     stateSelector.insertAdjacentHTML('beforeend', html);
 }
 
-payValue.addEventListener('click',function(e){
-    e.preventDefault()
-    //modal//
-    overlay.classList.remove('hidden')
-    modal.classList.remove('hidden')
-    //visiblethe submit btn//
-        submitBtn.classList.remove('hidden');
-        modal.scrollIntoView(20);
-});
 
-
+//creating object from for entry
 function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -345,13 +340,48 @@ function handleSubmit(event) {
         state:data.get('state'),
         amount:data.get('amount'),
     }
-
-  
     console.log({ value });
   }
-  
-  form.addEventListener('submit', handleSubmit);
 
+//pop up appearing
+
+payValue.addEventListener('click',function(e){
+    e.preventDefault();
+    donated = true;
+});
+
+
+// payValue.addEventListener('click',function(e){
+//     e.preventDefault()
+//     //modal//
+//     overlay.classList.remove('hidden')
+//     modal.classList.remove('hidden')
+//     //visiblethe submit btn//
+//         submitBtn.classList.remove('hidden');
+//         modal.scrollIntoView(20);
+// });
+
+
+form.addEventListener('submit',(event)=>{
+    // Prevent submit
+    event.preventDefault();
+    // find inputs, textareas, and selects within the parent
+    let children = event.target.querySelectorAll('input, textarea, select');
+    // find if any of them are empty
+    let findEmpty = Array.from(children).find((element)=>{
+        if(element.value.length < 1){return true}
+        return false
+    });
+    // check if found an empty child
+    if(findEmpty){
+        // if so alert
+        alert(findEmpty.name);
+    }else{
+        // if not submit form
+        if (!donated) alert('please donate first');
+        if (donated) form.addEventListener('submit', handleSubmit);
+    }
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -360,10 +390,10 @@ function handleSubmit(event) {
 //     modal.classList.add('hidden')
 // })
 
-// document.addEventListener('keydown',(e) => {
-//     // console.log(e.key);
-//     if (e.key === 'Escape'){
-//         overlay.classList.add('hidden')
-//         modal.classList.add('hidden')
-//     }
-// })
+document.addEventListener('keydown',(e) => {
+    // console.log(e.key);
+    if (e.key === 'Escape'){
+        overlay.classList.add('hidden')
+        modal.classList.add('hidden')
+    }
+})
