@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Form</title>
     <style>
-        *{
+        * {
             margin: 0;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -120,6 +121,11 @@
         .hidden {
             display: none;
         }
+
+        .terms-condition {
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -169,6 +175,10 @@
                 <input type="text" id="amount" name="amount" required>
             </div>
             <button class="btn">Donate</button>
+            <div class="terms-condition">
+                <input type="radio" id="accept">
+                <label for="accept">Accept terms & condition</label>
+            </div>
             <input type="submit" value="Submit" class="sub ">
         </form>
         <div class="modal hidden">

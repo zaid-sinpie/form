@@ -340,6 +340,8 @@ function handleSubmit(event) {
         state:data.get('state'),
         amount:data.get('amount'),
     }
+
+    //form data
     console.log({ value });
   }
 
@@ -347,6 +349,7 @@ function handleSubmit(event) {
 
 payValue.addEventListener('click',function(e){
     e.preventDefault();
+    // if(donated) alert('already donated')
     donated = true;
 });
 
